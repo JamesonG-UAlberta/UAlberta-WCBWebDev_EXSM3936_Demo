@@ -6,19 +6,21 @@ async function main() {
         housingMaterial: "Plastic",
         housingDiameter: 12,
         housingLength: 60,
-        inkColour: "Blue",
-        inkType: "Ink",
-        inkViscosity: 0.7,
-        inkRefillable: true,
-        inkLevel: 0.85,
+        ink: {
+            colour: "Blue",
+            type: "Ink",
+            viscosity: 0.7,
+            level: 0.85
+        },
+        refillable: true,
         brand: "Sharpie",
         hasCap: true,
         retractable: true,
         intact: true,
         write: function(numChars) {
-            if (this.inkLevel*100 >= numChars) // If we have enough ink to write the characters.
+            if (this.ink.level*100 >= numChars) // If we have enough ink to write the characters.
             {
-                this.inkLevel = (this.inkLevel-numChars/100).toFixed(2);
+                this.ink.level = (this.ink.level-numChars/100).toFixed(2);
             }
             else
             {
@@ -28,9 +30,9 @@ async function main() {
     };
 
     try {
-        output(pen.inkLevel); // 0.85
+        output(pen.ink.level); // 0.85
         pen.write(20); // Success
-        output(pen.inkLevel); // 0.65
+        output(pen.ink.level); // 0.65
         pen.write(70); // Require more ink than we have, throws exception.
     }
     catch (exception) // Catches exception.
