@@ -2,6 +2,7 @@ async function main() {
     class Computer {
         constructor(type, brand) {
             this.brand = brand;
+            // Set batteryLevel based on type (desktops have no batteries, whereas tablets and laptops do).
             switch(type.toUpperCase()) {
                 case "DESKTOP":
                     this.batteryLevel = null;
@@ -10,6 +11,7 @@ async function main() {
                 case "TABLET":
                     this.batteryLevel = 1.0;
                     break;
+                // If it's not a desktop, laptop or tablet, throw an exception.
                 default:
                     throw "Unexpected value for 'type'!";
                     break;
