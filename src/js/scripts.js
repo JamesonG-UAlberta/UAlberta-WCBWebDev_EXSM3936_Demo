@@ -8,6 +8,22 @@ paragraph.innerText = input.value;
 
 let button = document.querySelector("#button");
 
+let flashing = setInterval(function() {
+    if(paragraph.classList.contains("alert"))
+    {
+        paragraph.classList.remove("alert");
+    }
+    else
+    {
+        paragraph.classList.add("alert");
+    }
+}, 1000);
+button.addEventListener("click", function() {
+    clearInterval(flashing);
+});
+
+
+/*
 button.addEventListener("click", function() {
     console.log("Test!");
     if(paragraph.classList.contains("alert"))
@@ -19,3 +35,4 @@ button.addEventListener("click", function() {
         paragraph.classList.add("alert");
     }
 });
+*/
