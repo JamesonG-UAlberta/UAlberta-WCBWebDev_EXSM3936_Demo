@@ -1,1 +1,1 @@
-#Template
+#WCB Web Dev Template README
