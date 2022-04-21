@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCB Web Dev Template</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <input id="input1" type="text">
-    <input id="input2" type="text">
-    <input id="input3" type="text">
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-	  <script src="js/scripts.js" defer></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCB Web Dev Template</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <form>
+    <fieldset>
+      <label for="fName">First Name</label>
+      <input id="fName" type="text">
+    </fieldset>
+    <fieldset>
+      <label for="lName">Last Name</label>
+      <input id="lName" type="text">
+    </fieldset>
+    <fieldset>
+      <label for="age">Age</label>
+      <input id="age" type="text">
+    </fieldset>
+    <fieldset>
+      <label for="gender">Gender</label>
+      <input id="gender" type="text">
+    </fieldset>
+    <fieldset>
+      <label for="issue">Issue</label>
+      <textarea name="issue" id="issue" cols="30" rows="10"></textarea>
+    </fieldset>
+    <fieldset>
+      <button id="submit">Submit</button>
+      <button id="clear">Clear</button>
+    </fieldset>
+  </form>
+  <script src="js/scripts.js" defer></script>
+</body>
+
 </html>

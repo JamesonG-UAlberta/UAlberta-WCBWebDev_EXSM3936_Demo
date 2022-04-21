@@ -1,3 +1,19 @@
 .alert {
     background-color: firebrick;
 }
+form {
+    background-color: lightgray;
+    border: 2px solid darkgray;
+}
+fieldset {
+    border: none;
+    text-align: center;
+}
+label {
+    text-transform: capitalize;
+    font-weight: bold;
+    display: block;
+}
+button {
+    text-align: center;
+}
