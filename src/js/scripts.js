@@ -3,11 +3,16 @@ const url = document.querySelector("#url");
 const addBtn = document.querySelector("#add");
 const clearBtn = document.querySelector("#clear");
 
+// Any time ANY key is lifted.
 document.addEventListener("keyup", e => {
+    // If the key is Enter...
     if (e.key == "Enter") {
+        // Simulate a click on the add button.
         addBtn.click();
     }
+    // If the key is Delete...
     else if (e.key == "Delete") {
+        // Use CSS to pick the last div in the gallery, and delete it.
         document.querySelector("#gallery > div:last-child").remove();
     }
 });
@@ -23,22 +28,28 @@ addBtn.addEventListener("click", e => {
    // -- Create the Container -- //
     const newElementContainer = document.createElement("div");
     const newElementClose = document.createElement("a");
+    // Set the text of the link to X.
     newElementClose.innerText = "X";
+    // Add an event listener to the X to remove the div containing it.
     newElementClose.addEventListener("click", e => {
         newElementContainer.remove();
     });
 
     // -- Create the Hierarchy -- //
+    // Add the close button and image to the div.
     newElementContainer.appendChild(newElementClose);
     newElementContainer.appendChild(newElement);
 
    // -- Add to Page -- //
+   // Add the div to the page.
     gallery.appendChild(newElementContainer);
 });
 clearBtn.addEventListener("click", e => {
+    // querySelectorAll gets an array of all matching elements.
     const imageList = document.querySelectorAll("#gallery > div");
     for (image of imageList)
     {
+        // Remove everything that matched the query.
         image.remove();
     }
 });
