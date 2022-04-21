@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+#gallery {
+    margin-bottom: 20px;
+}
+input {
+    width: 85%;
+}
+button {
+    width: 10%;
+}
