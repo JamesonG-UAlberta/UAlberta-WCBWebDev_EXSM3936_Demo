@@ -5,6 +5,12 @@
 #gallery {
     margin-bottom: 20px;
 }
+#gallery img {
+    width: 98%;
+    margin: 0 1%;
+    border: 3px solid darkgrey;
+    border-radius: 15px;
+}
 input {
     width: 85%;
 }
