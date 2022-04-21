@@ -4,6 +4,12 @@ const addBtn = document.querySelector("#add");
 const clearBtn = document.querySelector("#clear");
 
 
+document.addEventListener("keyup", e => {
+    if (e.key == "Enter") {
+        addBtn.click();
+    }
+});
+
 // e => {} is the same as function (e) {}
 addBtn.addEventListener("click", e => {
    let imageURL = url.value;
