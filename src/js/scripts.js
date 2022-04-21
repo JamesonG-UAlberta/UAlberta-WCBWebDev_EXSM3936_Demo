@@ -3,10 +3,12 @@ const url = document.querySelector("#url");
 const addBtn = document.querySelector("#add");
 const clearBtn = document.querySelector("#clear");
 
-
 document.addEventListener("keyup", e => {
     if (e.key == "Enter") {
         addBtn.click();
+    }
+    else if (e.key == "Delete") {
+        document.querySelector("#gallery > div:last-child").remove();
     }
 });
 
