@@ -30,8 +30,23 @@
       <label for="issue">Issue</label>
       <textarea name="issue" id="issue" cols="30" rows="10"></textarea>
     </fieldset>
+    <div id="optional" class="hidden">
+      <fieldset>
+        <label for="weight">Weight (kg)</label>
+        <input id="weight" type="text">
+      </fieldset>
+      <fieldset>
+        <label for="height">Height (cm)</label>
+        <input id="height" type="text">
+      </fieldset>
+      <fieldset>
+        <label for="smoker">Do you smoke?</label>
+        <input id="smoker" type="text">
+      </fieldset>
+    </div>
     <fieldset>
       <button id="submit">Submit</button>
+      <button id="showHide">Show Optional Fields</button>
       <button id="clear">Clear</button>
     </fieldset>
   </form>
