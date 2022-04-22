@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCB Web Dev Template</title>
-    <link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body>
-    <div id="gallery">
 
-    </div>
-    <input id="url" type="text">
-    <div>
-      <button id="add">Add Picture</button>
-      <button id="clear">Clear Pictures</button>
-    </div>
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCB Web Dev Template</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
 
-	  <script src="js/scripts.js" defer></script>
-  </body>
+<body>
+  <div class="flex">
+    <input id="search" placeholder="Enter one or more tags separated by spaces to search." type="text">
+    <button id="searchBtn">Search</button>
+  </div>
+  <div id="gallery">
+
+  </div>
+  <form>
+    <input id="url" class="form-100" placeholder="Please enter a URL to an image." type="text">
+    <div class="flex">
+      <input id="tags" class="form-50"
+        placeholder="Please enter any tags separated by commas: here, are, some, examples" type="text">
+
+      <select name="size" class="form-50" id="size">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+    <input id="caption" class="form-100" placeholder="Please enter a caption." type="text">
+    <div class="flex">
+    <button id="add" class="form-50">Add Picture</button>
+    <button id="clear" class="form-50">Clear Pictures</button>
+  </div>
+  </form>
+
+
+  <script src="js/scripts.js" defer></script>
+</body>
+
 </html>

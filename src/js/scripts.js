@@ -1,3 +1,28 @@
+/*
+To-Do:
+☐ Tag images with one or more tags (eg: #beach #summer)
+☐ Search images by their tag(s)
+☐ Have the gallery persist after refreshing or closing the page
+☐ Dark mode
+☐ Size choice (small, medium, large)
+☐ Caption
+☐ Upload Date
+☐ Hide the Add Picture Form 
+☐ Bonus: Modal popup
+*/
+class StoredImage {
+    constructor(url, tagList, size, caption)
+    {
+        this.url = url;
+        // Input format: "beach, summer, fun"
+        // Stored format: ["beach", "summer", "fun"]
+        this.tags = tagList.split(", ");
+        this.size = size;
+        this.caption = caption.trim();
+        this.addedDate = new Date.now();
+    }
+}
+
 const gallery = document.querySelector("#gallery");
 const url = document.querySelector("#url");
 const addBtn = document.querySelector("#add");

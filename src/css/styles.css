@@ -1,7 +1,10 @@
 * {
     box-sizing: border-box;
 }
-
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
 #gallery {
     margin-bottom: 20px;
 }
@@ -22,11 +25,20 @@
 #gallery img {
     width: 100%;
 }
-input {
-    width: 100%;
+input, select, button {
     margin-bottom: 10px;
+    height: 26px;
 }
-button {
-    width: 40%;
-    margin: 0 4%;
+.form-100 {
+    width: 100%;
+}
+.form-50 {
+    width: 49.5%;
+}
+
+#search {
+    width: 89%
+}
+#searchBtn {
+    width: 10%;
 }
