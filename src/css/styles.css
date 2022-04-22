@@ -4,6 +4,13 @@
 .hidden {
     display: none;
 }
+button {
+    border: 3px solid darkgray;
+    border-radius: 5px;
+}
+button.show {
+    border-color: lightgreen;
+}
 form {
     background-color: lightgray;
     border: 2px solid darkgray;
