@@ -5,6 +5,9 @@
     display: flex;
     justify-content: space-between;
 }
+#gallery div.hidden {
+    display: none;
+}
 #gallery {
     margin-bottom: 20px;
 }
@@ -52,8 +55,11 @@ input, select, button {
 }
 
 #search {
-    width: 89%
+    width: 79%
 }
 #searchBtn {
+    width: 10%;
+}
+#searchClearBtn {
     width: 10%;
 }
