@@ -1,9 +1,15 @@
+.dark {
+    background-color: darkslategray;
+}
 * {
     box-sizing: border-box;
 }
 .flex {
     display: flex;
     justify-content: space-between;
+}
+.flex.right {
+    justify-content: flex-end;
 }
 #gallery div.hidden {
     display: none;

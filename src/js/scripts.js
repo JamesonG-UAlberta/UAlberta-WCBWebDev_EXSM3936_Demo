@@ -3,7 +3,7 @@ To-Do:
 ☑ Tag images with one or more tags (eg: #beach #summer)
 ☑ Search images by their tag(s)
 ☑ Have the gallery persist after refreshing or closing the page
-☐ Dark mode
+☑ Dark mode
 ☑ Size choice (small, medium, large)
 ☑ Caption
 ☑ Upload Date
@@ -12,8 +12,7 @@ To-Do:
 ☐ Bonus: Modal popup
 */
 class StoredImage {
-    constructor(url, tagList, size, caption)
-    {
+    constructor(url, tagList, size, caption) {
         this.url = url;
         // Input format: "beach, summer, fun"
         // Stored format: ["beach", "summer", "fun"]
@@ -38,9 +37,10 @@ const inputSize = document.querySelector("#size");
 const tagSearchBar = document.querySelector("#search");
 const tagSearchBtn = document.querySelector("#searchBtn");
 const tagClearBtn = document.querySelector("#searchClearBtn");
+// Dark
+const darkBtn = document.querySelector("#dark");
 
-function renderImage(imageObj)
-{
+function renderImage(imageObj) {
     // -- Create the Image -- //
     const newElement = document.createElement("img"); // When we create this element, it is not on the page because it hasn't been appended to anything that is currently on the page. It's just kind of floating in memory.
     newElement.setAttribute("src", imageObj.url);
@@ -61,17 +61,15 @@ function renderImage(imageObj)
     });
 
     const newElementTags = document.createElement("p");
-    for (let i = 0; i < imageObj.tags.length; i++)
-    {
+    for (let i = 0; i < imageObj.tags.length; i++) {
         const tagLink = document.createElement("a");
         tagLink.addEventListener("click", e => {
             tagSearchBar.value = imageObj.tags[i];
             tagSearchBtn.click();
         });
-        tagLink.innerText = "#"+imageObj.tags[i];
+        tagLink.innerText = "#" + imageObj.tags[i];
         newElementTags.appendChild(tagLink);
-        if(i < imageObj.tags.length-1)
-        {
+        if (i < imageObj.tags.length - 1) {
             newElementTags.appendChild(document.createTextNode(" "));
         }
     }
@@ -111,7 +109,7 @@ document.addEventListener("keyup", e => {
 // e => {} is the same as function (e) {}
 addBtn.addEventListener("click", e => {
     e.preventDefault();
-    renderImage(imageList[imageList.push(new StoredImage(inputURL.value, inputTags.value, inputSize.value, inputCaption.value))-1])    
+    renderImage(imageList[imageList.push(new StoredImage(inputURL.value, inputTags.value, inputSize.value, inputCaption.value)) - 1])
     localStorage.setItem("wcbImageGallery", JSON.stringify(imageList));
 });
 clearBtn.addEventListener("click", e => {
@@ -119,8 +117,7 @@ clearBtn.addEventListener("click", e => {
 
     // querySelectorAll gets an array of all matching elements.
     const imageList = document.querySelectorAll("#gallery > div");
-    for (image of imageList)
-    {
+    for (image of imageList) {
         // Remove everything that matched the query.
         image.remove();
     }
@@ -128,28 +125,39 @@ clearBtn.addEventListener("click", e => {
 tagSearchBtn.addEventListener("click", e => {
     e.preventDefault();
     tagClearBtn.click();
-    for (image of imageList)
-    {
-        if (!image.tags.includes(tagSearchBar.value))
-        {
+    for (image of imageList) {
+        if (!image.tags.includes(tagSearchBar.value)) {
             image.renderedImage.classList.add("hidden");
         }
     }
 });
 tagClearBtn.addEventListener("click", e => {
     e.preventDefault();
-    for (image of document.querySelectorAll("#gallery>div"))
-    {
+    for (image of document.querySelectorAll("#gallery>div")) {
         image.classList.remove("hidden");
+    }
+});
+darkBtn.addEventListener("click", e => {
+    e.preventDefault();
+    const body = document.querySelector("body");
+    if (body.classList.contains("dark")) {
+        body.classList.remove("dark");
+        localStorage.setItem("wcbImageGalleryDark", "no");
+    }
+    else {
+        body.classList.add("dark");
+        localStorage.setItem("wcbImageGalleryDark", "yes");
     }
 });
 window.addEventListener("load", e => {
     console.log("LOAD!");
     imageList = JSON.parse(localStorage.getItem("wcbImageGallery"));
-    for (let i = 0; i < imageList.length; i++)
-    {
+    for (let i = 0; i < imageList.length; i++) {
         // For some reason JSON encodes dates as a string, so we have to revive the Date.
         imageList[i].addedDate = new Date(imageList[i].addedDate);
         renderImage(imageList[i]);
+    }
+    if (localStorage.getItem("wcbImageGalleryDark") == "yes") {
+        document.querySelector("body").classList.add("dark");
     }
 });
