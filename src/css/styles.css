@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+td {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border: 1px solid black;
+}
+.token {
+    width: 80%;
+}
