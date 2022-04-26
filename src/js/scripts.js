@@ -33,14 +33,17 @@ class Character extends Token {
     }
 }
 class Player extends Character {
+    // Because we're updating based on frames, we set flags to determine what happens in each frame.
     moveDown = false;
     moveUp = false;
     moveLeft = false;
     moveRight = false;
+    // init() runs once, so this is where we set out initial position.
     init() {
         this.renderToken(2,2);
     }
     update() {
+        // Update position based on input flags.
         if (this.moveDown) {
             player.renderToken(player.x, player.y + 1);
         }
@@ -53,6 +56,7 @@ class Player extends Character {
         if (this.moveRight) {
             player.renderToken(player.x + 1, player.y);
         }
+        // If we run out of hit points, we lose.
         if(this.hitPoints == 0) {
             console.log("Game Over!");
         }
@@ -70,7 +74,7 @@ class Enemy extends Character {
 
 const player = new Player("img/knight.jpg", 3);
 const enemy = new Enemy("img/bad.jpg", 1);
-// Because we're updating based on frames, we set flags to determine what happens in each frame.
+
 
 // Modify the flags based on key events.
 window.addEventListener("keydown", (e) => {
