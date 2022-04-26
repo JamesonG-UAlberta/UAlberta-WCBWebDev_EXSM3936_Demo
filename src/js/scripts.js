@@ -25,62 +25,92 @@ class Token {
         }
     }
 }
-const player = new Token("img/knight.jpg");
+class Character extends Token {
+    constructor(tokenImage, hitPoints)
+    {
+        super(tokenImage);
+        this.hitPoints = hitPoints;
+    }
+}
+class Player extends Character {
+    moveDown = false;
+    moveUp = false;
+    moveLeft = false;
+    moveRight = false;
+    init() {
+        this.renderToken(2,2);
+    }
+    update() {
+        if (this.moveDown) {
+            player.renderToken(player.x, player.y + 1);
+        }
+        if (this.moveUp) {
+            player.renderToken(player.x, player.y - 1);
+        }
+        if (this.moveLeft) {
+            player.renderToken(player.x - 1, player.y);
+        }
+        if (this.moveRight) {
+            player.renderToken(player.x + 1, player.y);
+        }
+        if(this.hitPoints == 0) {
+            console.log("Game Over!");
+        }
+    }
+}
+class Enemy extends Character {
+    init() {
+        this.renderToken(9,9);
+    }
+    update() {
+        // TODO: Random movement.
+        enemy.renderToken(enemy.x, enemy.y);
+    }
+}
+
+const player = new Player("img/knight.jpg", 3);
+const enemy = new Enemy("img/bad.jpg", 1);
 // Because we're updating based on frames, we set flags to determine what happens in each frame.
-let moveDown = false;
-let moveUp = false;
-let moveLeft = false;
-let moveRight = false;
+
 // Modify the flags based on key events.
 window.addEventListener("keydown", (e) => {
     if (e.key == "ArrowDown") {
-        moveDown = true;
+        player.moveDown = true;
     }
     else if (e.key == "ArrowUp") {
-        moveUp = true;
+        player.moveUp = true;
     }
     else if (e.key == "ArrowLeft") {
-        moveLeft = true;
+        player.moveLeft = true;
     }
     else if (e.key == "ArrowRight") {
-        moveRight = true;
+        player.moveRight = true;
     }
 });
 window.addEventListener("keyup", (e) => {
     if (e.key == "ArrowDown") {
-        moveDown = false;
+        player.moveDown = false;
     }
     else if (e.key == "ArrowUp") {
-        moveUp = false;
+        player.moveUp = false;
     }
     else if (e.key == "ArrowLeft") {
-        moveLeft = false;
+        player.moveLeft = false;
     }
     else if (e.key == "ArrowRight") {
-        moveRight = false;
+        player.moveRight = false;
     }
 });
 // Runs once when the window loads, and starts the game loop.
 window.addEventListener("load", (e) => {
     // Game initialization.
-    player.renderToken(2, 2);
+    player.init();
+    enemy.init();
 
     // Start loop.
     window.setInterval(() => {
         // Game loop, runs 10 times per second.
-
-        // Move the player based on the flags.
-        if (moveDown) {
-            player.renderToken(player.x, player.y + 1);
-        }
-        if (moveUp) {
-            player.renderToken(player.x, player.y - 1);
-        }
-        if (moveLeft) {
-            player.renderToken(player.x - 1, player.y);
-        }
-        if (moveRight) {
-            player.renderToken(player.x + 1, player.y);
-        }
+        player.update();
+        enemy.update();
     }, 500);
 });
