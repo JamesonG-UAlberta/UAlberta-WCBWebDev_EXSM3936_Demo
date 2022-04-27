@@ -1,12 +1,24 @@
 const paragraph = document.querySelector("#fun-fact");
 const button = document.querySelector("#fetch");
-const input = document.querySelector("#count");
+const count = document.querySelector("#count");
+const size = document.querySelector("#size");
 
 button.addEventListener("click", e => {
     e.preventDefault;
-
-
-        fetch(`https://api.aakhilv.me/fun/facts?num=${count.value}`) // Specify your API endpoint here.
+    let endpoint = "https://api.aakhilv.me/fun/facts?";
+    if (count.value !== "") {
+        endpoint += "count="+count.value+"&";
+    }
+    if (size.value !== "") {
+        endpoint += "size="+size.value+"&";
+    }
+    if (endpoint[endpoint.length-1] == "&")
+    {
+        endpoint = endpoint.slice(0,endpoint.length-1);
+    }
+    console.log(endpoint);
+    /*
+        fetch(endpoint) // Specify your API endpoint here.
         .then(response => {
             if (response.ok)
             {
@@ -33,7 +45,7 @@ button.addEventListener("click", e => {
                 i += 2 (i = i + 2)
 
                 "Hello" += "World" ("HelloWorld")
-            */
+    
         }).finally(() => {
             paragraph.innerText += " Request complete.";
         });/*.catch(exception => { // Promise style catch, to be used after .then() statements.
@@ -42,6 +54,9 @@ button.addEventListener("click", e => {
             paragraph.innerText += " Request complete.";
         });
         */
+
+
+
 
         
 });
