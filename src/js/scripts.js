@@ -34,6 +34,8 @@ button.addEventListener("click", e => {
 
                 "Hello" += "World" ("HelloWorld")
             */
+        }).finally(() => {
+            paragraph.innerText += " Request complete.";
         });/*.catch(exception => { // Promise style catch, to be used after .then() statements.
             paragraph.innerText = exception;
         }).finally(() => { // Promise style finally, to be used after .then() and .catch() statements, will run regardless of if the catch fires.
@@ -41,5 +43,5 @@ button.addEventListener("click", e => {
         });
         */
 
-    
+        
 });
