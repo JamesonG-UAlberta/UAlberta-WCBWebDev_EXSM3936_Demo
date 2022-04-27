@@ -14,15 +14,19 @@ button.addEventListener("click", e => {
             }
             else
             {
-                throw "Invalid value!";
+                paragraph.innerText = "You entered a bad. Please try again.";
+                return false;
             }            
         }) // Convert the response to JSON.
         .then(data => { // In these braces, you have your JSON data.
-
+            if (data)
+            {
+                console.log(String(data));
+                paragraph.innerHTML="-"+String(data).replaceAll(".,",".<br />-");
+            }
             // Put the JSON data in the console.
             //paragraph.innerText+=" "+data;
-            console.log(String(data));
-            paragraph.innerHTML="-"+String(data).replaceAll(".,",".<br />-");
+            
 
             /* 
                 i++ (i = i + 1)
@@ -30,12 +34,12 @@ button.addEventListener("click", e => {
 
                 "Hello" += "World" ("HelloWorld")
             */
-        }).catch(exception => { // Promise style catch, to be used after .then() statements.
+        });/*.catch(exception => { // Promise style catch, to be used after .then() statements.
             paragraph.innerText = exception;
         }).finally(() => { // Promise style finally, to be used after .then() and .catch() statements, will run regardless of if the catch fires.
             paragraph.innerText += " Request complete.";
         });
-
+        */
 
     
 });
