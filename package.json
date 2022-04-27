@@ -1,0 +1,28 @@
+{
+  "name": "ualberta-wcbwebdev_exsm3936_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesonG-UAlberta/UAlberta-WCBWebDev_EXSM3936_Demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesonG-UAlberta/UAlberta-WCBWebDev_EXSM3936_Demo/issues"
+  },
+  "homepage": "https://github.com/JamesonG-UAlberta/UAlberta-WCBWebDev_EXSM3936_Demo#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "browserify": "^17.0.0"
+  }
+}
