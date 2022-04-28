@@ -1,5 +1,5 @@
 async function main() {
-    class ClientHouse
+    class House
     {
         // Expect everything as strings. If they're already bool/number, then great, but if not we can convert them to be safe.
         constructor(clientFirstName, clientLastName, clientHomeAddress, clientPhoneNumber, houseType, houseSize, houseConstructionYear, houseSwimmingPool, houseSmokeDetectors, houseFireplace, houseNearFireStation)
@@ -20,8 +20,12 @@ async function main() {
             return this.clientFirstName + " " + clientLastName;
         }
     }
-
-    let theClientHouse = new ClientHouse(
+    class Bungalow extends House {}
+    class SplitLevel extends House {}
+    class Cottage extends House {}
+    class Hut extends House {}
+    
+    let theClientHouse = new Hut(
         await input("Please enter the client's first name: "),
         await input("Please enter the client's first name: "), 
         await input("Please enter the client's home address: "),
