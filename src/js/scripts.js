@@ -1,13 +1,19 @@
 async function main() {
+    class Client {
+        constructor(firstName, lastName, homeAddress, phoneNumber)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.homeAddress = homeAddress;
+            this.phoneNumber = Number(phoneNumber);
+        }
+    }
     class House
     {
         // Expect everything as strings. If they're already bool/number, then great, but if not we can convert them to be safe.
         constructor(clientFirstName, clientLastName, clientHomeAddress, clientPhoneNumber, houseType, houseSize, houseConstructionYear, houseSwimmingPool, houseSmokeDetectors, houseFireplace, houseNearFireStation)
         {
-            this.clientFirstName = clientFirstName;
-            this.clientLastName = clientLastName;
-            this.clientHomeAddress = clientHomeAddress;
-            this.clientPhoneNumber = Number(clientPhoneNumber);
+            this.client = new Client(clientFirstName, clientLastName, clientHomeAddress, clientPhoneNumber);
             this.houseType = houseType;
             this.houseSize = Number(houseSize);
             this.houseConstructionYear = Number(houseConstructionYear);
