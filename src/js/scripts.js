@@ -5,58 +5,42 @@ const size = document.querySelector("#size");
 
 button.addEventListener("click", e => {
     e.preventDefault;
-    let endpoint = "https://api.aakhilv.me/fun/facts?";
-    if (count.value !== "") {
-        endpoint += "count="+count.value+"&";
-    }
-    if (size.value !== "") {
-        endpoint += "size="+size.value+"&";
-    }
-    if (endpoint[endpoint.length-1] == "&")
-    {
-        endpoint = endpoint.slice(0,endpoint.length-1);
-    }
-    console.log(endpoint);
-    /*
+    let endpoint = "https://www.boredapi.com/api/activity";
         fetch(endpoint) // Specify your API endpoint here.
         .then(response => {
             if (response.ok)
             {
-                return response.json();
+                return response.json(); // This is async, don't try to pull out of here, do it in the second then().
             }
             else
             {
-                paragraph.innerText = "You entered a bad. Please try again.";
+                paragraph.innerText = "Unidentified error, please try again later.";
                 return false;
             }            
         }) // Convert the response to JSON.
         .then(data => { // In these braces, you have your JSON data.
             if (data)
             {
-                console.log(String(data));
-                paragraph.innerHTML="-"+String(data).replaceAll(".,",".<br />-");
+                let myOutput = {
+                    type: data.type,
+                    activity: data.activity,
+                    participants: data.participants
+                };
+
+                paragraph.innerText = `Let's do a ${myOutput.type} activity with ${myOutput.participants} people! We're going to ${myOutput.activity}.`;
             }
-            // Put the JSON data in the console.
-            //paragraph.innerText+=" "+data;
-            
-
-            /* 
-                i++ (i = i + 1)
-                i += 2 (i = i + 2)
-
-                "Hello" += "World" ("HelloWorld")
-    
         }).finally(() => {
             paragraph.innerText += " Request complete.";
-        });/*.catch(exception => { // Promise style catch, to be used after .then() statements.
-            paragraph.innerText = exception;
-        }).finally(() => { // Promise style finally, to be used after .then() and .catch() statements, will run regardless of if the catch fires.
-            paragraph.innerText += " Request complete.";
         });
-        */
-
-
-
-
-        
 });
+
+/*
+8: We define our endpoint that we're querying.
+9: We start the query (IE send it off).
+10: then() tells the program to wait until the query comes back, 'then' do its body.
+11: If the code for the response is "ok", then forward the data as JSON.
+15: If the code isn't "ok", forward a false.
+21: then() tells the program to wait until the json conversion is done, 'then' do its body.
+22: If there is data (it's not false from line 18), then do the bulk of our processing.
+32: After the bulk of our processing, close out by doing something (adding "Request complete.").
+*/
